@@ -25,14 +25,18 @@ app.use(session({
     secret: 'mysecretapp',
     resave: true,
     saveUninitialized: true
-}))
+}));
 
 
 //global variables
 
 //routes
+app.use(require('./routes/index'));
+app.use(require('./routes/notes'));
+app.use(require('./routes/users'));
 
 //static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 //server listenings
 app.listen(app.get('port'), () => {
