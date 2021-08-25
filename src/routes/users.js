@@ -5,7 +5,7 @@ router.get('/users/signin', (req, res) => {
 });
 
 router.get('/users/signup', (req, res) => {
-    res.send('formulario de ingreso');
+    res.render('users/signup.hbs');
 });
 
 
