@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/users/signin', (req, res) => {
-    res.send('please sign in');
+    res.render('users/signin.hbs');
 });
 
 router.get('/users/signup', (req, res) => {
