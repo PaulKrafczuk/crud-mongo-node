@@ -1,12 +1,42 @@
+{{#each errors}}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{text}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/each}}
+
 <div class="col-md-4 mx-auto">
-    <div class="card">
-        <div class="card-header">New Note</div>
-        <div class="card-doby">
-            <form action="/">
-                <div class="form-group">
-                    <input type="text" name="tittle" class="form-control" placeholder="Tittle" autofocus>
-                </div>
-            </form>
+  <div class="card">
+    <div class="card-header">New Note</div>
+    <div class="card-doby">
+      <!-- action del formulario redirige a la ruta new-note -->
+      <form action="/notes/new-note" method="POST">
+        <div class="form-group">
+          <input
+            type="text"
+            name="tittle"
+            class="form-control"
+            placeholder="Tittle"
+          />
         </div>
+        <div class="form-group">
+          <textarea
+            name="description"
+            class="form-control"
+            placeholder="Descripcion"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <div class="d-grid">
+            <button class="btn btn-primary" type="submit">Agregar nota</button>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
