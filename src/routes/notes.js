@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 router.get('/notes/add', (req, res) => {
-    res.render('notes/new-note.hbs');
+    res.render('notes/new-note');
 });
 
 router.post('/notes/new-note', (req, res) => {
@@ -9,15 +9,15 @@ router.post('/notes/new-note', (req, res) => {
     const errors = [];
 
     if (!tittle) { //validacion del titulo
-        errors.push('inserta un titulo');
+        errors.push({ text: 'inserta un titulo' });
     }
 
     if (!description) { //validacion de la descripcion
-        errors.push('la descripcion no puede estar vacia');
+        errors.push({ text: 'la descripcion no puede estar vacia' });
     }
 
     if (errors.length > 0) {
-        res.render('/notes/new-note', { errors, tittle, description });
+        res.render('notes/new-note', { errors, tittle, description });
     } else {
         res.send('okey');
     }
