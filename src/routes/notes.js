@@ -1,11 +1,16 @@
 const router = require('express').Router();
 
+const Note = require('../models/Note');
+
 router.get('/notes/add', (req, res) => {
     res.render('notes/new-note');
 });
 
 router.post('/notes/new-note', (req, res) => {
+    console.log(req.body);
+
     const { tittle, description } = req.body;
+    console.log(tittle, description);
     const errors = [];
 
     if (!tittle) { //validacion del titulo
@@ -19,6 +24,8 @@ router.post('/notes/new-note', (req, res) => {
     if (errors.length > 0) {
         res.render('notes/new-note', { errors, tittle, description });
     } else {
+        const newNote = new Note({ tittle, description });
+        console.log(newNote);
         res.send('okey');
     }
 
