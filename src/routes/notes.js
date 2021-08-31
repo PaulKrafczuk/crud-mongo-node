@@ -6,7 +6,7 @@ router.get('/notes/add', (req, res) => {
     res.render('notes/new-note');
 });
 
-router.post('/notes/new-note', (req, res) => {
+router.post('/notes/new-note', async (req, res) => {
     console.log(req.body);
 
     const { tittle, description } = req.body;
@@ -25,14 +25,15 @@ router.post('/notes/new-note', (req, res) => {
         res.render('notes/new-note', { errors, tittle, description });
     } else {
         const newNote = new Note({ tittle, description });
-        console.log(newNote);
-        res.send('okey');
+        await newNote.save();
+        res.redirect('/notes');
     }
 
 });
 
-router.get('/notes', (req, res) => {
-    res.send('Notes from database');
+router.get('/notes', async (req, res) => {
+    const notes = await Note.find().sort({ date: 'desc' }).lean();
+    res.render('notes/all-notes.hbs', { notes });
 });
 
 module.exports = router;

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const noteSchema = new Schema({
-    titulo: { type: String, required: true },
-    descripsion: { type: String, required: true },
+    tittle: { type: String, required: true },
+    description: { type: String, required: true },
     date: { type: Date, default: Date.now },
 });
 
