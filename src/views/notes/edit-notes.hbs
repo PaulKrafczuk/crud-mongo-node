@@ -1,20 +1,29 @@
 <div class="col-md-4 mx-auto">
-    <div class="card">
-        <div class="card-header">
-<h3>Edit note</h3>
+  <div class="card">
+    <div class="card-header">
+      <h3>Edit note</h3>
+    </div>
+    <div class="cad-body">
+      <form action="/notes/edit-notes/{{note._id}}?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+        <div class="form-group">
+          <input
+            type="text"
+            name="tittle"
+            class="form-control"
+            value="{{note.tittle}}"
+          />
         </div>
-        <div class="cad-body">
-<form action="/notes/edit-notes/{{note._id}}" method="POST">
-    <div class="form-group">
-        <input type="text" name="tittle" class="form-control" value="{{note.tittle}}">
-    </div>
-    <div class="form-group">
-        <textarea name="description" class="form-control">{{note.description}}</textarea>
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary btn-blog" type="submit">Save</button>
-    </div>
-</form>
+        <div class="form-group">
+          <textarea
+            name="description"
+            class="form-control"
+          >{{note.description}}</textarea>
         </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-blog" type="submit">Save</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
