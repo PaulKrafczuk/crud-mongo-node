@@ -12,7 +12,12 @@
           </h4>
           <p>{{description}}</p>
           <div class="d-grid gap-2">
-            <button class="btn btn-danger btn-block btn-sm">Delete</button>
+            <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+              <input type="hidden" value="DELETE" name="_method" />
+              <button class="btn btn-danger btn-block btn-sm" type="submit">
+                Delete
+              </button>
+            </form>
           </div>
         </div>
       </div>
