@@ -15,6 +15,10 @@ router.post('/users/signup', (req, res) => {
         errors.push({ text: 'please insert your name' });
     };
 
+    if (!email) {
+        errors.push({ text: 'please insert your email' });
+    };
+
     if (password != confirm_password) {
         errors.push({ text: 'Password dot not match' });
     };
