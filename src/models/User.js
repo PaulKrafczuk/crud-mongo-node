@@ -9,16 +9,16 @@ const UserSchema = new Schema({
     date: { type: Date, default: Date.now }
 });
 
-UserSchema.methods.encryptPassword = async (passwors) => {
+UserSchema.methods.encryptPassword = async(password) => {
     const salt = await bcrypt.genSalt(10);
     const hash = bcrypt.hash(password, salt)
     return hash;
 };
 
-UserSchema.methods.matchPassword = function async(password) {
+UserSchema.methods.matchPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 };
 
-return await bcrypt.compare(password, this.password);
 
-module.exports = mongoose.model('User', UserSchema)
+
+module.exports = mongoose.model('User', UserSchema);
