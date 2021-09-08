@@ -8,5 +8,9 @@ body {
 }
 
 .form-group {
-margin: 1rem;
+    margin: 1rem;
+}
+
+.logo {
+    width: 30%;
 }
