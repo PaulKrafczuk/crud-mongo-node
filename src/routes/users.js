@@ -17,7 +17,7 @@ router.get('/users/signup', (req, res) => {
     res.render('users/signup.hbs');
 });
 
-router.post('/users/signup', async function(req, res) {
+router.post('/users/signup', async function (req, res) {
     const { name, email, password, confirm_password } = req.body;
     const errors = [];
     if (!name) {
@@ -54,5 +54,9 @@ router.post('/users/signup', async function(req, res) {
 
 });
 
+router.get('/users/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/');
+});
 
 module.exports = router;

@@ -1,16 +1,23 @@
 body {
-    background: #36D1DC;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #5B86E5, #36D1DC);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #36d1dc;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5b86e5, #36d1dc);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .form-group {
-    margin: 1rem;
+  margin: 1rem;
 }
 
+.card {
+  margin: 20px;
+}
 .logo {
-    width: 30%;
+  width: 30%;
+}
+
+.alert {
+  margin: 20px;
 }

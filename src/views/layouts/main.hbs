@@ -29,12 +29,15 @@
   </head>
 
   <body>
-    <p>navegacion</p>
+
+    {{> navigation}}
+    
     <main class="container">
       {{> messages}}
       {{> errors}}
       {{{body}}}
     </main>
+
     <p>footer</p>
 
     <!-- SCRIPTS -->
