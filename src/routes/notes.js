@@ -2,11 +2,13 @@ const router = require('express').Router();
 
 const Note = require('../models/Note');
 
-router.get('/notes/add', (req, res) => {
+const { isAuthenticated } = require('../helpers/auth');
+
+router.get('/notes/add', isAuthenticated, (req, res) => {
     res.render('notes/new-note');
 });
 
-router.post('/notes/new-note', async (req, res) => {
+router.post('/notes/new-note', isAuthenticated, async (req, res) => {
     console.log(req.body);
 
     const { tittle, description } = req.body;
@@ -32,24 +34,24 @@ router.post('/notes/new-note', async (req, res) => {
 
 });
 
-router.get('/notes', async (req, res) => {
+router.get('/notes', isAuthenticated, async (req, res) => {
     const notes = await Note.find().sort({ date: 'desc' }).lean();
     res.render('notes/all-notes.hbs', { notes });
 });
 
-router.get('/notes/edit/:id', async (req, res) => {
+router.get('/notes/edit/:id', isAuthenticated, async (req, res) => {
     const note = await Note.findById(req.params.id).lean();
     res.render('notes/edit-notes.hbs', { note })
 });
 
-router.put('/notes/edit-notes/:id', async (req, res) => {
+router.put('/notes/edit-notes/:id', isAuthenticated, async (req, res) => {
     const { tittle, description } = req.body;
     await Note.findByIdAndUpdate(req.params.id, { tittle, description });
     req.flash('success_msg', 'Nota editada satisfactoriamente');
     res.redirect('/notes');
 });
 
-router.delete('/notes/delete/:id', async (req, res) => {
+router.delete('/notes/delete/:id', isAuthenticated, async (req, res) => {
     await Note.findByIdAndDelete(req.params.id);
     req.flash('success_msg', 'Nota eliminada satisfactoriamente');
     res.redirect('/notes');
